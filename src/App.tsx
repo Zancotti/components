@@ -23,6 +23,8 @@ const App = () => {
     <Container>
       <Header isScrolled={scrolled} />
       <Sidebar />
+      <EmptyContainer />
+      <EmptyContainer />
     </Container>
   );
 };
@@ -30,8 +32,12 @@ const App = () => {
 export default App;
 
 const Container = styled.div`
-  display: flex;
+  display: grid;
+  grid-auto-columns: 1fr, 1fr, 1frs;
   flex-direction: column;
   width: 100%;
+  height: 100dvh;
+`;
+const EmptyContainer = styled.div`
   height: 100dvh;
 `;

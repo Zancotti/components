@@ -8,7 +8,16 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
   return (
     <Container $isScrolled={isScrolled}>
       <Initials $isScrolled={isScrolled}>SZ</Initials>
-      <SecondaryTitle $isScrolled={isScrolled}>Components by Sabrina Zancotti</SecondaryTitle>
+      <SecondaryTitleContainer>
+        <SecondaryTitle $isScrolled={isScrolled}>Components</SecondaryTitle>
+
+        <SecondaryTitle2 $isScrolled={isScrolled}>
+          by{" "}
+          <GitHubLink $isScrolled={isScrolled} href="https://github.com/Zancotti" target="_blank">
+            Sabrina Zancotti
+          </GitHubLink>
+        </SecondaryTitle2>
+      </SecondaryTitleContainer>
     </Container>
   );
 };
@@ -17,27 +26,50 @@ export default Header;
 
 const Container = styled.div<{ $isScrolled: boolean }>`
   display: flex;
-  text-align: center;
   padding: 0.5rem;
-  background-color: ${({ $isScrolled }) => ($isScrolled ? "#000" : "rgb(193, 225, 193)")};
+  background-color: ${({ $isScrolled }) => ($isScrolled ? "#242424" : "white")};
   position: sticky;
   top: 0;
   z-index: 1000;
   transition: background-color 0.2s ease, color 0.2s ease;
+  row-gap: 10rem;
+  font-family: "Roboto", sans-serif;
 `;
 
 const Initials = styled.div<{ $isScrolled: boolean }>`
   font-size: 2rem;
   padding: 0.5rem;
-  border: ${({ $isScrolled }) => ($isScrolled ? "1px solid rgb(193, 225, 193)" : "1px solid black")};
-  background-color: ${({ $isScrolled }) => ($isScrolled ? "rgb(193, 225, 193)" : "#000")};
-  color: ${({ $isScrolled }) => ($isScrolled ? "#000" : "rgb(193, 225, 193)")};
-  transition: background-color 0.2s ease, color 0.2s ease;
+  border: 1px solid rgb(97, 208, 158);
+  border-radius: 5px;
+  background-color: rgb(97, 208, 158);
+  font-weight: 700;
 `;
+
+const SecondaryTitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 1rem;
+`;
+
 const SecondaryTitle = styled.div<{ $isScrolled: boolean }>`
-  font-size: 1rem;
-  align-self: center;
-  margin: 0 auto;
-  color: ${({ $isScrolled }) => ($isScrolled ? "rgb(193, 225, 193)" : "#000")};
+  font-size: 1.75em;
+  color: ${({ $isScrolled }) => ($isScrolled ? "rgb(97, 208, 158)" : "#000")};
   transition: color 0.2s ease;
+  text-align: center;
+`;
+
+const SecondaryTitle2 = styled(SecondaryTitle)`
+  font-size: 1rem;
+`;
+
+const GitHubLink = styled.a<{ $isScrolled: boolean }>`
+  color: ${({ $isScrolled }) => ($isScrolled ? "rgb(97, 208, 158)" : "#000")};
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: ${({ $isScrolled }) => ($isScrolled ? "white" : "rgb(97, 208, 158)")};
+  }
 `;
