@@ -2,6 +2,19 @@ import { useEffect, useState } from "react";
 import Header from "./assets/Header";
 import Sidebar from "./assets/Sidebar";
 import styled from "styled-components";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import HoverEffect from "./assets/HoverEffect";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <div>Startsida</div>,
+  },
+  {
+    path: "/component1",
+    element: <div>Component 1</div>,
+  },
+]);
 
 const App = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -22,7 +35,10 @@ const App = () => {
   return (
     <Container>
       <Header isScrolled={scrolled} />
-      <Sidebar />
+      <SidebarHoverContainer>
+        <Sidebar />
+      </SidebarHoverContainer>
+      <RouterProvider router={router} />
       <EmptyContainer />
       <EmptyContainer />
     </Container>
@@ -40,4 +56,7 @@ const Container = styled.div`
 `;
 const EmptyContainer = styled.div`
   height: 100dvh;
+`;
+const SidebarHoverContainer = styled.div`
+  position: relative;
 `;
