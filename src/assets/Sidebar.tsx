@@ -27,7 +27,6 @@ const Sidebar: React.FC<SidebarProps> = ({ navigate }) => {
   const handleButtonClick = (number: number, path: string) => {
     setNrClicked(number);
     setIsClicked(true);
-    console.log(path);
     navigate(path);
   };
 
@@ -36,6 +35,7 @@ const Sidebar: React.FC<SidebarProps> = ({ navigate }) => {
       {isHovered && <HoverEffect nrHovered={nrHovered} />}
       {isClicked && <ClickedEffect nrClicked={nrClicked} />}
       <ComponentButton
+        aria-label="Home"
         onMouseEnter={() => handleMouseEnter(0)}
         onMouseLeave={handleMouseLeave}
         onClick={() => handleButtonClick(0, "/")}
@@ -44,6 +44,7 @@ const Sidebar: React.FC<SidebarProps> = ({ navigate }) => {
         <ButtonText>Home</ButtonText>
       </ComponentButton>
       <ComponentButton
+        aria-label="Component 1"
         onMouseEnter={() => handleMouseEnter(1)}
         onMouseLeave={handleMouseLeave}
         onClick={() => handleButtonClick(1, "/component1")}
@@ -52,6 +53,7 @@ const Sidebar: React.FC<SidebarProps> = ({ navigate }) => {
         <ButtonText>Component 1</ButtonText>
       </ComponentButton>
       <ComponentButton
+        aria-label="Component 2"
         onMouseEnter={() => handleMouseEnter(2)}
         onMouseLeave={handleMouseLeave}
         onClick={() => handleButtonClick(2, "/component2")}
@@ -60,6 +62,7 @@ const Sidebar: React.FC<SidebarProps> = ({ navigate }) => {
         <ButtonText>Component 2</ButtonText>
       </ComponentButton>
       <ComponentButton
+        aria-label="Component 3"
         onMouseEnter={() => handleMouseEnter(3)}
         onMouseLeave={handleMouseLeave}
         onClick={() => handleButtonClick(3, "/component3")}
@@ -68,6 +71,7 @@ const Sidebar: React.FC<SidebarProps> = ({ navigate }) => {
         <ButtonText>Component 3</ButtonText>
       </ComponentButton>
       <ComponentButton
+        aria-label="Component 4"
         onMouseEnter={() => handleMouseEnter(4)}
         onMouseLeave={handleMouseLeave}
         onClick={() => handleButtonClick(4, "/component4")}
@@ -76,6 +80,7 @@ const Sidebar: React.FC<SidebarProps> = ({ navigate }) => {
         <ButtonText>Component 4</ButtonText>
       </ComponentButton>
       <ComponentButton
+        aria-label="Component 5"
         onMouseEnter={() => handleMouseEnter(5)}
         onMouseLeave={handleMouseLeave}
         onClick={() => handleButtonClick(5, "/component5")}

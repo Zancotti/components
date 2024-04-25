@@ -32,7 +32,6 @@ const Container = styled.div<{ $isScrolled: boolean }>`
   top: 0;
   z-index: 1000;
   transition: background-color 0.2s ease, color 0.2s ease;
-  row-gap: 10rem;
   font-family: "Roboto", sans-serif;
 `;
 
