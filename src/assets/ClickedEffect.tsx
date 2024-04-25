@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
-interface HoverEffectProps {
-  nrHovered: number;
+interface ClickedEffectProps {
+  nrClicked: number;
 }
 
-const HoverEffect: React.FC<HoverEffectProps> = ({ nrHovered }) => <Hovered $nrHovered={nrHovered} />;
+const ClickedEffect: React.FC<ClickedEffectProps> = ({ nrClicked }) => <Clicked $nrClicked={nrClicked} />;
 
-export default HoverEffect;
+export default ClickedEffect;
 
-const Hovered = styled.div<{ $nrHovered: number }>`
+const Clicked = styled.div<{ $nrClicked: number }>`
   background-color: white;
   text-align: start;
   height: 3rem;
@@ -16,9 +16,9 @@ const Hovered = styled.div<{ $nrHovered: number }>`
   align-items: center;
   transition: background-color 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8), top 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8);
   border-radius: 5px;
-  background-color: rgb(227, 227, 227);
+  background-color: rgb(97, 208, 158);
   position: absolute;
-  top: ${({ $nrHovered }) => `calc(${0.5 + $nrHovered * 3}rem)`};
+  top: ${({ $nrClicked }) => `calc(${0.5 + $nrClicked * 3}rem)`};
   left: 0;
   z-index: -1;
   width: 250px;

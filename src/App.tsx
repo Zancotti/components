@@ -2,21 +2,10 @@ import { useEffect, useState } from "react";
 import Header from "./assets/Header";
 import Sidebar from "./assets/Sidebar";
 import styled from "styled-components";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import HoverEffect from "./assets/HoverEffect";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <div>Startsida</div>,
-  },
-  {
-    path: "/component1",
-    element: <div>Component 1</div>,
-  },
-]);
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 const App = () => {
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -35,10 +24,20 @@ const App = () => {
   return (
     <Container>
       <Header isScrolled={scrolled} />
-      <SidebarHoverContainer>
-        <Sidebar />
-      </SidebarHoverContainer>
-      <RouterProvider router={router} />
+      <SidebarMainContainer>
+        <SidebarContainer>
+          <Sidebar navigate={navigate} />
+        </SidebarContainer>
+
+        <Routes>
+          <Route path="/" element={<div>Home</div>} />
+          <Route path="/component1" element={<div>Component 1</div>} />
+          <Route path="/component2" element={<div>Component 2</div>} />
+          <Route path="/component3" element={<div>Component 3</div>} />
+          <Route path="/component4" element={<div>Component 4</div>} />
+          <Route path="/component5" element={<div>Component 5</div>} />
+        </Routes>
+      </SidebarMainContainer>
       <EmptyContainer />
       <EmptyContainer />
     </Container>
@@ -57,6 +56,9 @@ const Container = styled.div`
 const EmptyContainer = styled.div`
   height: 100dvh;
 `;
-const SidebarHoverContainer = styled.div`
+const SidebarMainContainer = styled.div`
+  display: flex;
+`;
+const SidebarContainer = styled.div`
   position: relative;
 `;
