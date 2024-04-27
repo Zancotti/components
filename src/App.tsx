@@ -3,6 +3,7 @@ import Header from "./assets/Header";
 import Sidebar from "./assets/Sidebar";
 import styled from "styled-components";
 import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
+import HomePage from "./assets/HomePage";
 
 const App = () => {
   const navigate = useNavigate();
@@ -28,9 +29,9 @@ const App = () => {
         <SidebarContainer>
           <Sidebar navigate={navigate} />
         </SidebarContainer>
-        <main>
+        <Main>
           <Routes>
-            <Route path="/" element={<div aria-label="Home Page">Home</div>} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/component1" element={<div>Component 1</div>} />
             <Route path="/component2" element={<div>Component 2</div>} />
             <Route path="/component3" element={<div>Component 3</div>} />
@@ -38,7 +39,7 @@ const App = () => {
             <Route path="/component5" element={<div>Component 5</div>} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
-        </main>
+        </Main>
       </SidebarMainContainer>
       <EmptyContainer />
       <EmptyContainer />
@@ -62,4 +63,11 @@ const SidebarMainContainer = styled.div`
 `;
 const SidebarContainer = styled.div`
   position: relative;
+`;
+
+const Main = styled.main`
+  padding: 0.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;
