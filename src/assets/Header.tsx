@@ -7,7 +7,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
   return (
     <Container $isScrolled={isScrolled}>
-      <Initials $isScrolled={isScrolled}>SZ</Initials>
+      <Initials>SZ</Initials>
       <SecondaryTitleContainer>
         <SecondaryTitle $isScrolled={isScrolled}>Components</SecondaryTitle>
 
@@ -34,7 +34,7 @@ const Container = styled.div<{ $isScrolled: boolean }>`
   transition: background-color 0.2s ease, color 0.2s ease;
 `;
 
-const Initials = styled.div<{ $isScrolled: boolean }>`
+const Initials = styled.div`
   font-size: 2rem;
   padding: 0.5rem;
   border: 1px solid rgb(97, 208, 158);

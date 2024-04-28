@@ -4,6 +4,7 @@ import Sidebar from "./assets/Sidebar";
 import styled from "styled-components";
 import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import HomePage from "./assets/HomePage";
+import TripleColorAnimation from "./assets/TripleColorAnimation";
 
 const App = () => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const App = () => {
         <Main>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/component1" element={<div>Component 1</div>} />
+            <Route path="/component1" element={<TripleColorAnimation />} />
             <Route path="/component2" element={<div>Component 2</div>} />
             <Route path="/component3" element={<div>Component 3</div>} />
             <Route path="/component4" element={<div>Component 4</div>} />

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { IoExtensionPuzzle, IoHome } from "react-icons/io5";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HoverEffect from "./HoverEffect";
 import ClickedEffect from "./ClickedEffect";
 import { NavigateFunction } from "react-router-dom";
@@ -10,10 +10,15 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ navigate }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
+  const [isHovered, setIsHovered] = useState(true);
+  const [isClicked, setIsClicked] = useState(true);
   const [nrClicked, setNrClicked] = useState(0);
   const [nrHovered, setNrHovered] = useState(0);
+
+  useEffect(() => {
+    setNrClicked(0);
+    navigate("/");
+  }, []);
 
   const handleMouseEnter = (number: number) => {
     setNrHovered(number);
@@ -44,13 +49,13 @@ const Sidebar: React.FC<SidebarProps> = ({ navigate }) => {
         <ButtonText>Home</ButtonText>
       </ComponentButton>
       <ComponentButton
-        aria-label="Component 1"
+        aria-label="Triple Color Animation"
         onMouseEnter={() => handleMouseEnter(1)}
         onMouseLeave={handleMouseLeave}
         onClick={() => handleButtonClick(1, "/component1")}
       >
         <IoExtensionPuzzle size="2rem" />
-        <ButtonText>Component 1</ButtonText>
+        <ButtonText>Triple Color Animation</ButtonText>
       </ComponentButton>
       <ComponentButton
         aria-label="Component 2"
