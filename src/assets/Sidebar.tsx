@@ -52,19 +52,19 @@ const Sidebar: React.FC<SidebarProps> = ({ navigate }) => {
         aria-label="Triple Color Animation"
         onMouseEnter={() => handleMouseEnter(1)}
         onMouseLeave={handleMouseLeave}
-        onClick={() => handleButtonClick(1, "/component1")}
+        onClick={() => handleButtonClick(1, "/triple-color-animation")}
       >
         <IoExtensionPuzzle size="2rem" />
         <ButtonText>Triple Color Animation</ButtonText>
       </ComponentButton>
       <ComponentButton
-        aria-label="Component 2"
+        aria-label="Reveal Animation"
         onMouseEnter={() => handleMouseEnter(2)}
         onMouseLeave={handleMouseLeave}
-        onClick={() => handleButtonClick(2, "/component2")}
+        onClick={() => handleButtonClick(2, "/reveal-animation")}
       >
         <IoExtensionPuzzle size="2rem" />
-        <ButtonText>Component 2</ButtonText>
+        <ButtonText>Reveal Animation</ButtonText>
       </ComponentButton>
       <ComponentButton
         aria-label="Component 3"
