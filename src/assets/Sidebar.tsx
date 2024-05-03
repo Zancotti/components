@@ -1,24 +1,25 @@
 import styled from "styled-components";
 import { IoExtensionPuzzle, IoHome } from "react-icons/io5";
-import { useEffect, useState } from "react";
 import HoverEffect from "./HoverEffect";
 import ClickedEffect from "./ClickedEffect";
-import { NavigateFunction } from "react-router-dom";
+import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
-interface SidebarProps {
-  navigate: NavigateFunction;
-}
+const Sidebar: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
 
-const Sidebar: React.FC<SidebarProps> = ({ navigate }) => {
+  const findCurrentIndex = () => {
+    const paths = ["/", "/triple-color-animation", "/reveal-animation", "/component3", "/component4", "/component5"];
+    const currentPath = location.pathname;
+    const currentIndex = paths.findIndex((path) => path === currentPath);
+    return currentIndex;
+  };
+
   const [isHovered, setIsHovered] = useState(true);
   const [isClicked, setIsClicked] = useState(true);
-  const [nrClicked, setNrClicked] = useState(0);
-  const [nrHovered, setNrHovered] = useState(0);
-
-  useEffect(() => {
-    setNrClicked(0);
-    navigate("/");
-  }, []);
+  const [nrClicked, setNrClicked] = useState(findCurrentIndex());
+  const [nrHovered, setNrHovered] = useState(findCurrentIndex());
 
   const handleMouseEnter = (number: number) => {
     setNrHovered(number);

@@ -2,13 +2,12 @@ import { useEffect, useState } from "react";
 import Header from "./assets/Header";
 import Sidebar from "./assets/Sidebar";
 import styled from "styled-components";
-import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import HomePage from "./assets/HomePage";
 import TripleColorAnimation from "./assets/TripleColorAnimation";
 import RevealAnimation from "./assets/RevealAnimation";
 
 const App = () => {
-  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -29,7 +28,7 @@ const App = () => {
       <Header isScrolled={scrolled} />
       <SidebarMainContainer>
         <SidebarContainer>
-          <Sidebar navigate={navigate} />
+          <Sidebar />
         </SidebarContainer>
         <Main>
           <Routes>
