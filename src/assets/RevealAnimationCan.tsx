@@ -47,12 +47,10 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
-  width: 100%;
   height: auto;
 `;
 
 const CanImage = styled.img<{ $isVisible: boolean }>`
-  width: 50%;
   height: auto;
   transition: opacity 1s ease-in;
   transition-delay: ${({ $isVisible }) => ($isVisible ? "0ms" : "1000ms")};
@@ -60,31 +58,21 @@ const CanImage = styled.img<{ $isVisible: boolean }>`
   position: relative;
   z-index: 2;
 
-  @media ${above("tablet")} {
-    width: 60%;
-  }
-
-  @media ${above("laptop")} {
-    width: 50%;
-  }
+  width: 450px;
 `;
 
 const FruitContainer = styled.div<{ $isVisible: boolean; $linearGradient: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 10vw;
-  height: 10vw;
-  min-width: 50px;
-  min-height: 50px;
-  max-width: 300px;
-  max-height: 300px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   background: ${({ $linearGradient }) => $linearGradient};
   position: absolute;
   z-index: 1;
   top: 70%;
-  left: 50%;
+  left: 48%;
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
   transform: ${({ $isVisible }) => ($isVisible ? "translate(-150%, -50%)" : "translate(-50%, -50%)")};
   transition: ${({ $isVisible }) =>
@@ -108,8 +96,8 @@ const AnimatedText = styled.div<{ $isVisible: boolean; $linearGradient: string }
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 27%;
-  right: 41.5%;
+  top: 100px;
+  right: 160px;
   z-index: 1;
   font-weight: 900;
   font-size: ${({ $isVisible }) => ($isVisible ? "24px" : "1px")};
