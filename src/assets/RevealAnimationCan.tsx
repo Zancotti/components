@@ -8,9 +8,18 @@ interface RevealAnimationCanProps {
   src: string;
   alt: string;
   linearGradient: string;
+  fruitSrc: string;
+  fruitAlt: string;
 }
 
-const RevealAnimationCan: React.FC<RevealAnimationCanProps> = ({ id, src, alt, linearGradient }) => {
+const RevealAnimationCan: React.FC<RevealAnimationCanProps> = ({
+  id,
+  src,
+  alt,
+  linearGradient,
+  fruitSrc,
+  fruitAlt,
+}) => {
   const targetRef = useRef<HTMLImageElement>(null);
   const inViewport = useInViewPort(targetRef, { threshold: 0.5 });
   const [isVisible, setIsVisible] = useState(false);
@@ -22,8 +31,11 @@ const RevealAnimationCan: React.FC<RevealAnimationCanProps> = ({ id, src, alt, l
   return (
     <Container>
       <CanImage $isVisible={isVisible} ref={targetRef} id={id} src={src} alt={alt} />
+      <AnimatedText $linearGradient={linearGradient} $isVisible={isVisible}>
+        3$
+      </AnimatedText>
       <FruitContainer $isVisible={isVisible} $linearGradient={linearGradient}>
-        <FruitPicture $isVisible={isVisible} src="/StrawberriesImage.webp" />
+        <FruitPicture $isVisible={isVisible} src={fruitSrc} alt={fruitAlt} />
       </FruitContainer>
     </Container>
   );
@@ -69,14 +81,16 @@ const FruitContainer = styled.div<{ $isVisible: boolean; $linearGradient: string
   max-height: 300px;
   border-radius: 50%;
   background: ${({ $linearGradient }) => $linearGradient};
-  /* background: linear-gradient(135deg, #ff5858, #f06d6b, #c04848, #8f0f0f, #a4c639); */
   position: absolute;
   z-index: 1;
   top: 70%;
   left: 50%;
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
   transform: ${({ $isVisible }) => ($isVisible ? "translate(-150%, -50%)" : "translate(-50%, -50%)")};
-  transition: opacity 1.5s ease-in, transform 1s ease-in-out;
+  transition: ${({ $isVisible }) =>
+    $isVisible
+      ? "opacity 1.5s ease-in 1s, transform 1s ease-in-out 1s"
+      : "opacity 1.5s ease-in 0ms, transform 1s ease-in-out 0ms"};
 `;
 
 const FruitPicture = styled.img<{ $isVisible: boolean }>`
@@ -87,4 +101,28 @@ const FruitPicture = styled.img<{ $isVisible: boolean }>`
   border-radius: 50%;
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
   transition: opacity 1s ease-in;
+`;
+
+const AnimatedText = styled.div<{ $isVisible: boolean; $linearGradient: string }>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 27%;
+  right: 41.5%;
+  z-index: 1;
+  font-weight: 900;
+  font-size: ${({ $isVisible }) => ($isVisible ? "24px" : "1px")};
+  opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
+  transform: ${({ $isVisible }) => ($isVisible ? "translate(125%, -50%)" : "translate(-50%, -50%)")};
+  transition: opacity 0.5s ease-in, transform 1s ease-in-out, font-size 1s ease-in-out;
+  transition-delay: ${({ $isVisible }) => ($isVisible ? "1s" : "0ms")};
+  min-width: 50px;
+  min-height: 50px;
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 50%;
+  background: ${({ $linearGradient }) => $linearGradient};
+  padding: 1.5rem;
+  color: white;
 `;
