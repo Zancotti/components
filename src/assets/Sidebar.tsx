@@ -10,16 +10,24 @@ const Sidebar: React.FC = () => {
   const location = useLocation();
 
   const findCurrentIndex = () => {
-    const paths = ["/", "/triple-color-animation", "/reveal-animation", "/component3", "/component4", "/component5"];
+    const paths = [
+      "/",
+      "/triple-color-animation",
+      "/reveal-animation",
+      "/circle-tab-animation",
+      "/component4",
+      "/component5",
+    ];
     const currentPath = location.pathname;
     const currentIndex = paths.findIndex((path) => path === currentPath);
     return currentIndex;
   };
 
-  const [isHovered, setIsHovered] = useState(true);
-  const [isClicked, setIsClicked] = useState(true);
-  const [nrClicked, setNrClicked] = useState(findCurrentIndex());
-  const [nrHovered, setNrHovered] = useState(findCurrentIndex());
+  const [isHovered, setIsHovered] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+  const initialIndex = findCurrentIndex();
+  const [nrClicked, setNrClicked] = useState(initialIndex);
+  const [nrHovered, setNrHovered] = useState(initialIndex);
 
   const handleMouseEnter = (number: number) => {
     setNrHovered(number);
@@ -68,13 +76,13 @@ const Sidebar: React.FC = () => {
         <ButtonText>Reveal Animation</ButtonText>
       </ComponentButton>
       <ComponentButton
-        aria-label="Component 3"
+        aria-label="Circle Tab Animation"
         onMouseEnter={() => handleMouseEnter(3)}
         onMouseLeave={handleMouseLeave}
-        onClick={() => handleButtonClick(3, "/component3")}
+        onClick={() => handleButtonClick(3, "/circle-tab-animation")}
       >
         <IoExtensionPuzzle size="2rem" />
-        <ButtonText>Component 3</ButtonText>
+        <ButtonText>Circle Tab Animation</ButtonText>
       </ComponentButton>
       <ComponentButton
         aria-label="Component 4"

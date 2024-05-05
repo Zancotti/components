@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import useInViewPort from "./UseInViewPort";
-import { above } from "./MediaQueries";
 
 interface RevealAnimationCanProps {
   id: string;
@@ -21,7 +20,7 @@ const RevealAnimationCan: React.FC<RevealAnimationCanProps> = ({
   fruitAlt,
 }) => {
   const targetRef = useRef<HTMLImageElement>(null);
-  const inViewport = useInViewPort(targetRef, { threshold: 0.5 });
+  const inViewport = useInViewPort(targetRef, { threshold: 0.8 });
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

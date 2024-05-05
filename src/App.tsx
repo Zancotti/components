@@ -6,6 +6,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import HomePage from "./assets/HomePage";
 import TripleColorAnimation from "./assets/TripleColorAnimation";
 import RevealAnimation from "./assets/RevealAnimation";
+import CircleTabAnimation from "./assets/CircleTabAnimation";
 
 const App = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -35,7 +36,7 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/triple-color-animation" element={<TripleColorAnimation />} />
             <Route path="/reveal-animation" element={<RevealAnimation />} />
-            <Route path="/component3" element={<div>Component 3</div>} />
+            <Route path="/circle-tab-animation" element={<CircleTabAnimation />} />
             <Route path="/component4" element={<div>Component 4</div>} />
             <Route path="/component5" element={<div>Component 5</div>} />
             <Route path="*" element={<Navigate to="/" replace />} />
