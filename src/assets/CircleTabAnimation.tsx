@@ -26,7 +26,7 @@ const CircleTabAnimation: React.FC = () => {
       <Tab
         animationDelay={4}
         text="Sabrina Zancotti"
-        tabWidth={220}
+        tabWidth={230}
         backgroundColor="rgb(217, 105, 242)"
         borderColor="rgb(217, 105, 242)"
       />
