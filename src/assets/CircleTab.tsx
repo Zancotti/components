@@ -116,4 +116,5 @@ const Text = styled.span<{ $slide: boolean; $delay: number }>`
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 2px;
+  white-space: nowrap;
 `;
