@@ -7,6 +7,7 @@ import HomePage from "./assets/HomePage";
 import TripleColorAnimation from "./assets/TripleColorAnimation";
 import RevealAnimation from "./assets/RevealAnimation";
 import CircleTabAnimation from "./assets/CircleTabAnimation";
+import CharByCharAnimation from "./assets/CharByCharAnimation";
 
 const App = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -37,7 +38,7 @@ const App = () => {
             <Route path="/triple-color-animation" element={<TripleColorAnimation />} />
             <Route path="/reveal-animation" element={<RevealAnimation />} />
             <Route path="/circle-tab-animation" element={<CircleTabAnimation />} />
-            <Route path="/component4" element={<div>Component 4</div>} />
+            <Route path="/char-by-char-animation" element={<CharByCharAnimation />} />
             <Route path="/component5" element={<div>Component 5</div>} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>

@@ -85,13 +85,13 @@ const Sidebar: React.FC = () => {
         <ButtonText>Circle Tab Animation</ButtonText>
       </ComponentButton>
       <ComponentButton
-        aria-label="Component 4"
+        aria-label="Char by char animation"
         onMouseEnter={() => handleMouseEnter(4)}
         onMouseLeave={handleMouseLeave}
-        onClick={() => handleButtonClick(4, "/component4")}
+        onClick={() => handleButtonClick(4, "/char-by-char-animation")}
       >
         <IoExtensionPuzzle size="2rem" />
-        <ButtonText>Component 4</ButtonText>
+        <ButtonText>Char by char animation</ButtonText>
       </ComponentButton>
       <ComponentButton
         aria-label="Component 5"
