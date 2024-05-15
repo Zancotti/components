@@ -9,17 +9,18 @@ const Sidebar: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const paths = [
+    { path: "/", label: "Home", icon: <IoHome size="2rem" /> },
+    { path: "/triple-color-animation", label: "Triple Color Animation", icon: <IoExtensionPuzzle size="2rem" /> },
+    { path: "/reveal-animation", label: "Reveal Animation", icon: <IoExtensionPuzzle size="2rem" /> },
+    { path: "/circle-tab-animation", label: "Circle Tab Animation", icon: <IoExtensionPuzzle size="2rem" /> },
+    { path: "/char-by-char-animation", label: "Char by char animation", icon: <IoExtensionPuzzle size="2rem" /> },
+    { path: "/logotype-slider", label: "Logotype Slider", icon: <IoExtensionPuzzle size="2rem" /> },
+  ];
+
   const findCurrentIndex = () => {
-    const paths = [
-      "/",
-      "/triple-color-animation",
-      "/reveal-animation",
-      "/circle-tab-animation",
-      "/component4",
-      "/component5",
-    ];
     const currentPath = location.pathname;
-    const currentIndex = paths.findIndex((path) => path === currentPath);
+    const currentIndex = paths.findIndex((pathObj) => pathObj.path === currentPath);
     return currentIndex;
   };
 
@@ -48,60 +49,18 @@ const Sidebar: React.FC = () => {
     <Container>
       {isHovered && <HoverEffect nrHovered={nrHovered} />}
       {isClicked && <ClickedEffect nrClicked={nrClicked} />}
-      <ComponentButton
-        aria-label="Home"
-        onMouseEnter={() => handleMouseEnter(0)}
-        onMouseLeave={handleMouseLeave}
-        onClick={() => handleButtonClick(0, "/")}
-      >
-        <IoHome size="2rem" />
-        <ButtonText>Home</ButtonText>
-      </ComponentButton>
-      <ComponentButton
-        aria-label="Triple Color Animation"
-        onMouseEnter={() => handleMouseEnter(1)}
-        onMouseLeave={handleMouseLeave}
-        onClick={() => handleButtonClick(1, "/triple-color-animation")}
-      >
-        <IoExtensionPuzzle size="2rem" />
-        <ButtonText>Triple Color Animation</ButtonText>
-      </ComponentButton>
-      <ComponentButton
-        aria-label="Reveal Animation"
-        onMouseEnter={() => handleMouseEnter(2)}
-        onMouseLeave={handleMouseLeave}
-        onClick={() => handleButtonClick(2, "/reveal-animation")}
-      >
-        <IoExtensionPuzzle size="2rem" />
-        <ButtonText>Reveal Animation</ButtonText>
-      </ComponentButton>
-      <ComponentButton
-        aria-label="Circle Tab Animation"
-        onMouseEnter={() => handleMouseEnter(3)}
-        onMouseLeave={handleMouseLeave}
-        onClick={() => handleButtonClick(3, "/circle-tab-animation")}
-      >
-        <IoExtensionPuzzle size="2rem" />
-        <ButtonText>Circle Tab Animation</ButtonText>
-      </ComponentButton>
-      <ComponentButton
-        aria-label="Char by char animation"
-        onMouseEnter={() => handleMouseEnter(4)}
-        onMouseLeave={handleMouseLeave}
-        onClick={() => handleButtonClick(4, "/char-by-char-animation")}
-      >
-        <IoExtensionPuzzle size="2rem" />
-        <ButtonText>Char by char animation</ButtonText>
-      </ComponentButton>
-      <ComponentButton
-        aria-label="Component 5"
-        onMouseEnter={() => handleMouseEnter(5)}
-        onMouseLeave={handleMouseLeave}
-        onClick={() => handleButtonClick(5, "/component5")}
-      >
-        <IoExtensionPuzzle size="2rem" />
-        <ButtonText>Component 5</ButtonText>
-      </ComponentButton>
+      {paths.map((pathObj, index) => (
+        <ComponentButton
+          key={index}
+          aria-label={pathObj.label}
+          onMouseEnter={() => handleMouseEnter(index)}
+          onMouseLeave={handleMouseLeave}
+          onClick={() => handleButtonClick(index, pathObj.path)}
+        >
+          {pathObj.icon}
+          <ButtonText>{pathObj.label}</ButtonText>
+        </ComponentButton>
+      ))}
     </Container>
   );
 };
@@ -128,6 +87,7 @@ const ComponentButton = styled.button`
   border-radius: 5px;
   cursor: pointer;
 `;
+
 const ButtonText = styled.span`
   padding-left: 10px;
 `;
